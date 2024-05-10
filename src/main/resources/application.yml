@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: RegistrationTest
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 798970012006-mq0ld565tpb1h7vkee1540rq9f626fta.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://accounts.google.com/o/oauth2/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+
+  datasource:
+    password: ${DB_pass}
+    username: ${DB_username}
+    url: jdbc:mysql://localhost:3306/registrationtest
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
+logging:
+  level:
+    org:
+      springframework:
+        security=TRACE:
